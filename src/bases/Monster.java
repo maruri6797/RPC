@@ -2,8 +2,8 @@ package bases;
 
 import utils.Dice;
 
-public abstract class Human extends Living {
-	public Human(String name, String weapon) {
+public abstract class Monster extends Living {
+	public Monster(String name, String weapon) {
 		super(name, weapon);
 	}
 	
@@ -11,8 +11,6 @@ public abstract class Human extends Living {
 	public void attack(Living target) {
 		int damage = Dice.get(1, 10) * this.offensive;
 		target.hp -= damage;
-		this.offensive -= 1;
 		System.out.println("「" + this.name + "」が「" + this.weapon + "」で攻撃！「" + target.name + "」に" + damage + "のダメージを与えた。");
-		System.out.println("しかし自分の攻撃力も1減少した。");
 	}
 }
