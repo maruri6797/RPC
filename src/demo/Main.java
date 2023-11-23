@@ -38,9 +38,32 @@ public class Main {
 		while (true) {
 			System.out.printf("\n★ 第%d回線 ==========\n", count);
 			System.out.println("\n[人間のターン！]\n");
-			choiceHuman(humans);
-			choiceMonster(monsters);
+			Human human = choiceHuman(humans);
+			Monster monster = choiceMonster(monsters);
+			human.attack(monster);
+			if (monster.getHp() == 0) {
+				monsters.remove(monster);
+				System.out.println("★　「" + monster.getName() + "」は倒れた。");
+			}
+			if (monsters.size() == 0) {
+				System.out.println("★★ ==== 決着がついた！！ ==== ★★");
+				System.out.println("#### 人間たちは勝利した！！ ####");
+			}
 			
+			System.out.println("\n[モンスターのターン！]\n");
+			Human human2 = choiceHuman(humans);
+			Monster monster2 = choiceMonster(monsters);
+			monster2.attack(human2);
+			if (human2.getHp() == 0) {
+				humans.remove(human2);
+				System.out.println("★　「" + human2.getName() + "」は倒れた。");
+			}
+			if (humans.size() == 0) {
+				System.out.println("★★ ==== 決着がついた！！ ==== ★★");
+				System.out.println("#### モンスターたちは勝利した！！ ####");
+			}
+			showGroupInfos(humans, monsters);
+			count++;
 		}
 	}		
 		
