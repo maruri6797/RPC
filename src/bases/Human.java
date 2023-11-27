@@ -9,10 +9,10 @@ public abstract class Human extends Living {
 	
 	@Override
 	public void attack(Living target) {
-		int damage = Dice.get(1, 10) * this.offensive;
+		int damage = Dice.get(1, 10) * super.offensive;
 		target.hp -= damage;
-		this.offensive -= 1;
-		System.out.println("「" + this.name + "」が「" + this.weapon + "」で攻撃！「" + target.name + "」に" + damage + "のダメージを与えた。");
+		super.offensive -= 1;
+		System.out.println("「" + super.name + "」が「" + super.weapon + "」で攻撃！「" + target.name + "」に" + damage + "のダメージを与えた。");
 		System.out.println("しかし自分の攻撃力も1減少した。");
 	}
 }

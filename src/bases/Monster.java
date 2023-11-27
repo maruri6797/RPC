@@ -9,8 +9,8 @@ public abstract class Monster extends Living {
 	
 	@Override
 	public void attack(Living target) {
-		int damage = Dice.get(1, 10) * this.offensive;
+		int damage = Dice.get(1, 10) * super.offensive;
 		target.hp -= damage;
-		System.out.println("「" + this.name + "」が「" + this.weapon + "」で攻撃！「" + target.name + "」に" + damage + "のダメージを与えた。");
+		System.out.println("「" + super.name + "」が「" + super.weapon + "」で攻撃！「" + target.name + "」に" + damage + "のダメージを与えた。");
 	}
 }
